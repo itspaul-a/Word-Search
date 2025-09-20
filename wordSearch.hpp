@@ -1,4 +1,6 @@
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 
 
 class wordSearch
@@ -8,6 +10,7 @@ class wordSearch
 		std::vector<std::vector<char>> _grid;
 
 	public:
+		int size;
 		wordSearch();
 		wordSearch(int size);
 
