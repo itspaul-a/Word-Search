@@ -18,5 +18,12 @@ wordSearch::wordSearch(int size)
 
 void wordSearch::print()
 {
-
+	for(auto&  i : _grid)
+	{
+		for(char j : i)
+		{
+			std::cout << j << " ";
+		}
+		std::cout << std::endl;
+	}
 }
