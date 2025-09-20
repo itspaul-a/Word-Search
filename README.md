@@ -1,4 +1,4 @@
-# Cross-Word-Puzzle
+# Word-Search
 
 This file can be compiled using:
 
