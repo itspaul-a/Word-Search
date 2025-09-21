@@ -11,11 +11,11 @@ class wordSearch
 		std::vector<std::vector<char>> _grid;
 
 	public:
-		int size;
+		int gridSize;
 		wordSearch();
 		wordSearch(int size);
 		void print();
-		void positionWord(std::string word, int direction);
+		void positionWord(std::string word);
 		void addWord();
 };
 

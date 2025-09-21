@@ -2,16 +2,15 @@
 
 wordSearch::wordSearch()
 {
-	int size;
 	std::cout << "Enter grid size: ";
-	std::cin >> size;
+	std::cin >> gridSize;
 
 	srand(static_cast<int>(time(0)));
 	
-	for(int i = 0; i < size; i++)
+	for(int i = 0; i < gridSize; i++)
 	{
 		_grid.push_back(std::vector<char>());
-		for(int j = 0; j < size; j++)
+		for(int j = 0; j < gridSize; j++)
 		{
 			//_grid.at(i).push_back(static_cast<char>(97 + rand() % (122-97 + 1)));
 			_grid.at(i).push_back('*');
@@ -19,44 +18,46 @@ wordSearch::wordSearch()
 	}
 }
 
-void wordSearch::positionWord(std::string word, int direction)
+void wordSearch::positionWord(std::string word)
 {
 
-	int xPos;
-	int yPos;
+	int sX;
+	int sY;
+
+	int eX;
+	int eY;
 
 	int wordCount = word.length();
 	
-	std::cout << "Enter x: ";
-	std::cin >> xPos;
-	std::cout << "Enter y: ";
-	std::cin >> yPos;
+	std::cout << "Enter start x: ";
+	std::cin >> sX;
+	std::cout << "Enter start y: ";
+	std::cin >> sY;
 
-	switch(direction)
+	std::cout << "Enter end x: ";
+	std::cin >> eX;
+	std::cout << "Enter end y: ";
+	std::cin >> eY;
+
+
+	//check if word fits in grid
+	if(sX > gridSize || sY > gridSize || eX > gridSize || eY > gridSize)
 	{
-		case 1:
-			//diagonal
-			for(int i = 0; i < wordCount; i++)
-			{
-				_grid[i+xPos][i+yPos] = word[i];
-			}
-		break;
+		std::cout << "word does not fit\n";
+		std::exit(EXIT_FAILURE);
+	}
 	
-		case 2:
-			//vertical
-			for(int i = 0; i<wordCount; i++)
-			{
-				_grid[i+xPos][yPos] = word[i];
-			}
-		break;
-		
-		case 3:
-			//horizontal
-			for(int i = 0; i < wordCount; i++)
-			{
-				_grid[xPos][i+yPos] = word[i];
-			}
-		break;
+	//find direction of word
+    int xStep = (eX - sX == 0) ? 0 : (eX - sX) / abs(eX - sX);
+    int yStep = (eY - sY == 0) ? 0 : (eY - sY) / abs(eY - sY);
+
+	//place word in grid
+	for(int i = 0; i < wordCount; i++)
+	{
+		_grid[sX][sY] = word[i];
+		sX += xStep;
+		sY += yStep;
+
 	}
 }
 
@@ -72,11 +73,7 @@ void wordSearch::addWord()
 		std::cout << "Enter word: ";
 		std::cin >> word;
 
-		int direction;
-		std::cout << "Enter direction 1-3: ";
-		std::cin >> direction;
-
-		positionWord(word, direction);
+		positionWord(word);
 	}
 }
 
