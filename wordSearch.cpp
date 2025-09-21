@@ -13,8 +13,49 @@ wordSearch::wordSearch()
 		_grid.push_back(std::vector<char>());
 		for(int j = 0; j < size; j++)
 		{
-			_grid.at(i).push_back(static_cast<char>(97 + rand() % (122-97 + 1)));
+			//_grid.at(i).push_back(static_cast<char>(97 + rand() % (122-97 + 1)));
+			_grid.at(i).push_back('*');
 		}
+	}
+}
+
+void wordSearch::addWords(int xPos, int yPos)
+{
+	int numberOfWords;
+	int wordCount;
+	int direction;
+	
+	std::cout << "enter word count: ";
+	std::cin >> wordCount;
+
+	std::cout << "Enter direction 1-3: ";
+	std::cin >> direction;
+
+	switch(direction)
+	{
+		case 1:
+			//diagonal
+			for(int i = 0; i < wordCount; i++)
+			{
+				_grid[i+xPos][i+yPos] = '%';
+			}
+		break;
+	
+		case 2:
+			//vertical
+			for(int i = 0; i<wordCount; i++)
+			{
+				_grid[i][0] = '%';
+			}
+		break;
+		
+		case 3:
+			//horizontal
+			for(int i = 0; i < wordCount; i++)
+			{
+				_grid[0][i] = '%';
+			}
+		break;
 	}
 }
 
