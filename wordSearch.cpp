@@ -19,17 +19,18 @@ wordSearch::wordSearch()
 	}
 }
 
-void wordSearch::addWords(int xPos, int yPos)
+void wordSearch::positionWord(std::string word, int direction)
 {
-	int numberOfWords;
-	int wordCount;
-	int direction;
-	
-	std::cout << "enter word count: ";
-	std::cin >> wordCount;
 
-	std::cout << "Enter direction 1-3: ";
-	std::cin >> direction;
+	int xPos;
+	int yPos;
+
+	int wordCount = word.length();
+	
+	std::cout << "Enter x: ";
+	std::cin >> xPos;
+	std::cout << "Enter y: ";
+	std::cin >> yPos;
 
 	switch(direction)
 	{
@@ -37,7 +38,7 @@ void wordSearch::addWords(int xPos, int yPos)
 			//diagonal
 			for(int i = 0; i < wordCount; i++)
 			{
-				_grid[i+xPos][i+yPos] = '%';
+				_grid[i+xPos][i+yPos] = word[i];
 			}
 		break;
 	
@@ -45,7 +46,7 @@ void wordSearch::addWords(int xPos, int yPos)
 			//vertical
 			for(int i = 0; i<wordCount; i++)
 			{
-				_grid[i][0] = '%';
+				_grid[i+xPos][yPos] = word[i];
 			}
 		break;
 		
@@ -53,9 +54,29 @@ void wordSearch::addWords(int xPos, int yPos)
 			//horizontal
 			for(int i = 0; i < wordCount; i++)
 			{
-				_grid[0][i] = '%';
+				_grid[xPos][i+yPos] = word[i];
 			}
 		break;
+	}
+}
+
+void wordSearch::addWord()
+{
+	int amountOfWords;
+	std::cout << "how many words: ";
+	std::cin >> amountOfWords;
+
+	for(int i = 0; i < amountOfWords; i++)
+	{
+		std::string word;
+		std::cout << "Enter word: ";
+		std::cin >> word;
+
+		int direction;
+		std::cout << "Enter direction 1-3: ";
+		std::cin >> direction;
+
+		positionWord(word, direction);
 	}
 }
 

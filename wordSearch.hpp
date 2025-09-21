@@ -15,6 +15,7 @@ class wordSearch
 		wordSearch();
 		wordSearch(int size);
 		void print();
-		void addWords(int xPos, int yPos);
+		void positionWord(std::string word, int direction);
+		void addWord();
 };
 
