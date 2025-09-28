@@ -2,10 +2,10 @@
 
 int main()
 {
-	wordSearch ws;
 
-	ws.addWord();
-	ws.print();
+	WordSearch ws;
 
+	ws.playGame();
+	
 	return 0;
 }

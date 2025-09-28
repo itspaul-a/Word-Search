@@ -1,21 +1,27 @@
 #include <iostream>
+#include <vector>
+#include <string>
+#include <utility>
 #include <cstdlib>
 #include <ctime>
-#include <string>
 
-
-class wordSearch
+class WordSearch
 {
 	private:
-
-		std::vector<std::vector<char>> _grid;
+	    int _gridSize;
+	
+	    std::vector<std::vector<char>> _grid;
+	    std::vector<std::string> _wordBank;
+	    std::vector<std::vector<std::pair<int,int>>> _positions;
 
 	public:
-		int gridSize;
-		wordSearch();
-		wordSearch(int size);
-		void print();
-		void positionWord(std::string word);
-		void addWord();
+	    WordSearch();
+
+	    void print();
+	    void addWord();
+		void addRandomLetters();
+	    void printSolution();
+	    void wordBank();
+		void playGame();
 };
 
