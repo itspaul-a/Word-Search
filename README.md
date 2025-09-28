@@ -6,6 +6,7 @@
 - if two words collide the program will output an error message
 - if the placement is valid the program will place the words in the grid and fill the rest with random lowercase letters
 - words are placed in a word bank to be looked for within the word search
+- user will be prompted if they want a solution grid
 
 ## This file can be compiled using:
 
