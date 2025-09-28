@@ -2,6 +2,7 @@
 
 ## Rules:
 - placement is done using the start and end coordinates to check for valid placement within the range.
+- words may be place in horizontal,vertical and diagonal positions forwards and backwards
 - if the coordinates do not fit in the grid the program will output an error message
 - if two words collide the program will output an error message
 - if the placement is valid the program will place the words in the grid and fill the rest with random lowercase letters
